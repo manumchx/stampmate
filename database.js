@@ -1,5 +1,5 @@
 const Database = require('better-sqlite3');
-const db = new Database('fidelpass.db');
+const db = new Database('stampmate.db');
 
 // Création des tables
 db.exec(`
@@ -34,6 +34,6 @@ db.exec(`
   );
 `);
 
-console.log('✅ Base de données FidelPass initialisée');
+console.log('✅ Base de données StampMate initialisée');
 
 module.exports = db;
