@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma Carte FidelPass</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f0f0f0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .card { background: white; border-radius: 20px; padding: 40px 30px; text-align: center; width: 320px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+    .logo { font-size: 48px; margin-bottom: 10px; }
+    .commercant { font-size: 22px; font-weight: bold; color: #333; margin-bottom: 5px; }
+    .client { font-size: 16px; color: #888; margin-bottom: 30px; }
+    .points-box { background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 15px; padding: 25px; margin-bottom: 25px; }
+    .points-number { font-size: 64px; font-weight: bold; color: white; }
+    .points-label { font-size: 16px; color: rgba(255,255,255,0.8); }
+    .badge { background: #f0f0f0; border-radius: 10px; padding: 12px; font-size: 14px; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">☕</div>
+    <div class="commercant" id="commercant">Chargement...</div>
+    <div class="client" id="client"></div>
+    <div class="points-box">
+      <div class="points-number" id="points">0</div>
+      <div class="points-label">points fidélité</div>
+    </div>
+    <div class="badge">🎁 10 points = 1 récompense offerte</div>
+  </div>
+  <script>
+    const serial = window.location.pathname.split('/').pop();
+    fetch('/client/' + serial)
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('commercant').textContent = data.commercant.nom;
+        document.getElementById('client').textContent = '👤 ' + data.client.nom;
+        document.getElementById('points').textContent = data.client.points;
+      });
+  </script>
+</body>
+</html>
