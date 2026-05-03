@@ -12,9 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.json({ message: 'StampMate API 🦘', version: '1.0.0' });
-});
+
 
 app.post('/commercant/inscription', (req, res) => {
   const { nom, email, mot_de_passe } = req.body;
