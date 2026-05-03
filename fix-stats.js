@@ -1,0 +1,12 @@
+const fs = require('fs');
+let html = fs.readFileSync('public/index.html', 'utf8');
+html = html.replace('<div class="section-label">Social Proof</div>', '<div class="section-label">Industry Data</div>');
+html = html.replace('<h2 style="font-size:40px;font-weight:800">Brisbane venues love StampMate</h2>', '<h2 style="font-size:40px;font-weight:800">What the data says about digital loyalty</h2>');
+html = html.replace('<div class="testi-stars">★★★★★</div><div class="quote">We replaced', '<div class="testi-stars" style="font-size:32px">40%</div><div class="quote">Average increase in repeat customer visits with digital loyalty cards vs paper stamp cards. — Hospitality Digital Loyalty Report</div><div class="x">');
+html = html.replace('Marco R.</div><div class="arole">The Corner Espresso, Fortitude Valley</div></div></div></div>', 'Industry Research</div><div class="arole">Hospitality Digital Loyalty Report 2024</div></div></div></div>');
+html = html.replace('<div class="testi-stars">★★★★★</div><div class="quote">My customers are excited', '<div class="testi-stars" style="font-size:32px">5x</div><div class="quote">Higher customer engagement with digital wallet cards vs traditional paper loyalty programs.</div><div class="x">');
+html = html.replace('Sarah T.</div><div class="arole">Sukis Kitchen, New Farm</div></div></div></div>', 'Consumer Study</div><div class="arole">Digital Wallet Adoption in Australia 2024</div></div></div></div>');
+html = html.replace('<div class="testi-stars">★★★★★</div><div class="quote">Setup took 10 minutes', '<div class="testi-stars" style="font-size:32px">30%</div><div class="quote">Average increase in customer spending when a loyalty program is active — Australian retail and hospitality data.</div><div class="x">');
+html = html.replace('Daniel K.</div><div class="arole">South Bank Burger Co.</div></div></div></div>', 'Market Analysis</div><div class="arole">Australian Loyalty Program Benchmarks</div></div></div></div>');
+fs.writeFileSync('public/index.html', html);
+console.log('Stats mises a jour!');
